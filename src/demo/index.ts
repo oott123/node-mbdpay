@@ -44,10 +44,34 @@ server.get('/', async (request, reply) => {
       <label>订单金额：<input name="priceInCent" type="number" value="1">（分）</label>
       <label>订单编号：<input name="outTradeNumber" type="text" value="mdbpay_" id="orderId"></label>
       <input name="browserUrl" type="hidden" id="browserUrl"></input>
+      <input name="openId" type="hidden" id="openId"></input>
       <button type="submit" formaction="/alipay">支付宝</button>
       <button type="submit" formaction="/wechat-web">微信 H5</button>
+      <button type="submit" formaction="/wechat-app">微信</button>
+      <button type="button" style="display: none;" id="clearOpenId" onclick="localStorage.openId = ''; alert('已清空openid'); location.replace('/')">清空openid</button>
     </form>
-    <script>browserUrl.value = location.href; orderId.value += (Math.random().toString(36).slice(2))</script>
+    <script>
+      browserUrl.value = location.href;
+      orderId.value += (Math.random().toString(36).slice(2));
+      if (navigator.userAgent.includes('MicroMessenger/')) {
+        if (localStorage.openId) {
+          openId.value = localStorage.openId;
+          clearOpenId.style.display = 'inline-block';
+        } else {
+          var match = location.search.match(/openid=([^&]+)(?:&|$)/);
+          if (match) {
+            localStorage.openId = match[1];
+            openId.value = match[1];
+            alert('已获取到 openid');
+            clearOpenId.style.display = 'inline-block';
+          } else {
+            if (confirm('获取 openid?')) {
+              location.href = '/wechat-get-open-id?redirect_url=' + encodeURIComponent(location.href);
+            }
+          }
+        }
+      }
+    </script>
   </body>
   </html>`
   await reply.type('text/html').send(html)
@@ -55,6 +79,7 @@ server.get('/', async (request, reply) => {
 
 require('./alipay')
 require('./wechatWeb')
+require('./wechatApp')
 
 server.listen(8080, (err) => {
   if (err) {
