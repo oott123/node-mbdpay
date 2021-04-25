@@ -51,7 +51,7 @@ server.get('/', async (request, reply) => {
         <button type="submit" formaction="/wechat-app">微信</button>
       </div>
       <div>
-        <button type="submit" formaction="/paid" formmethod="get">查订单</button>
+        <button type="button" onclick="location.href = '/paid?order_id=' + orderId.value">查订单</button>
         <button type="submit" formaction="/refund" formmethod="post">退款</button>
         <button type="button" style="display: none;" id="clearOpenId" onclick="localStorage.openId = ''; alert('已清空openid'); location.replace('/')">清空openid</button>
       </div>
@@ -78,6 +78,26 @@ server.get('/', async (request, reply) => {
         }
       }
     </script>
+  </body>
+  </html>`
+  await reply.type('text/html').send(html)
+})
+
+server.setErrorHandler(async (error, request, reply) => {
+  server.log.error(error)
+  const html = `<!DOCTYPE html>
+  <html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mbdpay demo</title>
+  </head>
+  <body>
+    <h2>发生错误</h2>
+    <p>${error.message}</p>
+    <pre>${error.stack}</pre>
+    <a href="/">首页</a>
   </body>
   </html>`
   await reply.type('text/html').send(html)
