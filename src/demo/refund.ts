@@ -18,7 +18,7 @@ server.post('/refund', async (request, reply) => {
       <title>订单退款</title>
     </head>
     <body>
-      ${refund ? '退款成功' : '退款失败'}
+      ${refund ? '退款成功' : '退款失败，可能是订单不存在'}
     </body>
   </html>`)
 })

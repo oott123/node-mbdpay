@@ -51,7 +51,7 @@ server.get('/', async (request, reply) => {
         <button type="submit" formaction="/wechat-app">微信</button>
       </div>
       <div>
-        <button type="submit" formaction="/order" formmethod="get">查订单</button>
+        <button type="submit" formaction="/paid" formmethod="get">查订单</button>
         <button type="submit" formaction="/refund" formmethod="post">退款</button>
         <button type="button" style="display: none;" id="clearOpenId" onclick="localStorage.openId = ''; alert('已清空openid'); location.replace('/')">清空openid</button>
       </div>
