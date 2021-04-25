@@ -7,7 +7,7 @@ server.get('/paid', async (request, reply) => {
     throw new Error('没有订单号')
   }
 
-  const order = await mbdpay.searchOrder(orderId)
+  const order = await mbdpay.getOrder(orderId)
 
   await reply.type('text/html').send(`<!DOCTYPE html>
   <html lang="zh-Hans">

@@ -261,7 +261,7 @@ export class MbdPay {
    * @param keyword 订单号、微信/支付宝流水号
    * @returns 查询到的订单
    */
-  public async searchOrder(keyword: string): Promise<MbdPayOrder> {
+  public async getOrder(keyword: string): Promise<MbdPayOrder> {
     const payload = {
       out_trade_no: keyword,
     }
