@@ -100,7 +100,7 @@ export class MbdPay {
     }
     this.apiEndpoint = options?.apiEndpoint || 'https://api.mianbaoduo.com/release'
     this.weChatOpenIdEndpoint = options?.weChatOpenIdEndpoint || 'https://mbd.pub/openid'
-    this.timeout = options?.timeout || 3000
+    this.timeout = options?.timeout || 15000
     this.agent = options?.agent
     this.ipAllowList = options?.ipWhiteList || ['49.233.5.148', '140.143.158.124']
   }
