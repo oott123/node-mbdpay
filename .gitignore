@@ -8,3 +8,4 @@
 #!/.yarn/cache
 /.pnp.*
 /dist
+/.env
