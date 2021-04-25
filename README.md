@@ -1,6 +1,6 @@
 # mbdpay - 面包多Pay Node.js SDK
 
-有完整 TypeScript 类型定义的面包多Pay Node.js SDK，0运行依赖。
+有完整 TypeScript 类型定义的面包多Pay Node.js SDK，0运行依赖。[API 文档](https://oott123.github.io/node-mbdpay/)
 
 ## 功能
 
@@ -60,3 +60,5 @@ const order = await mbdpay.getOrder(orderId)
 // 订单退款
 const success = await mbdpay.refund(orderId)
 ```
+
+查看 [API 文档](https://oott123.github.io/node-mbdpay/) 以了解参数细节。
