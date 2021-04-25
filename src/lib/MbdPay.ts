@@ -195,8 +195,7 @@ export class MbdPay {
    * 获取微信 JSAPI 支付需要使用的参数
    *
    * @link https://doc.mbd.pub/api/wei-xin-zhi-fu
-   * @see weChatGetRedirectUrlForGettingUserOpenId
-   * @param openId 用户的 openId
+   * @param openId 用户的 openId，用 weChatGetRedirectUrlForGettingUserOpenId 获取
    * @param order 订单详情
    * @param redirectUrl 支付完成后跳转的 URL
    * @returns JSAPI 需要使用的参数
