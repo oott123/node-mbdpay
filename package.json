@@ -5,6 +5,9 @@
     "watch": "tsc -w",
     "demo": "nodemon --watch dist dist/demo"
   },
+  "license": "BSD-3-Clause",
+  "version": "0.0.0",
+  "repository": "oott123/node-mbdpay",
   "files": [
     "dist"
   ],
