@@ -245,7 +245,7 @@ export class MbdPay {
    */
   public async aliPayGetFormHtml(order: MbdPayOrderInput, redirectUrl: string): Promise<string> {
     const payload = {
-      url: redirectUrl,
+      callback_url: redirectUrl,
       description: order.description,
       amount_total: order.priceInCent,
       out_trade_no: order.outTradeNumber,
