@@ -3,7 +3,10 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "demo": "nodemon --watch dist dist/demo"
+    "clean": "rimraf dist && rimraf docs",
+    "doc": "typedoc --excludePrivate src/index.ts",
+    "demo": "nodemon --watch dist dist/demo",
+    "preversion": "yarn clean && yarn build"
   },
   "license": "BSD-3-Clause",
   "version": "0.0.0",
