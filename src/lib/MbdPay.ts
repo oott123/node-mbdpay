@@ -1,5 +1,5 @@
 import { createHash } from 'crypto'
-import { request } from 'http'
+import { request } from 'https'
 import { Agent, IncomingMessage } from 'node:http'
 import { MbdPayError } from './MbdPayError'
 import { TimeoutError } from './TimeoutError'
@@ -27,7 +27,7 @@ export interface MbdPayOrderInput {
   /** 商品描述 */
   description: string
   /** 订单金额，单位人民币分 */
-  amountInCent: number
+  priceInCent: number
   /** 外部系统订单号，为空则由面包多Pay 生成 */
   outTradeNumber?: string
 }
@@ -91,18 +91,18 @@ export class MbdPay {
    * @param appKey 面包多Pay 后台 appKey
    * @param options 高级参数，没有特殊需求无需设置
    */
-  constructor(private appId: string, private appKey: string, options: MbdPayOptions) {
+  constructor(private appId: string, private appKey: string, options?: MbdPayOptions) {
     try {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       this.version = 'v' + require('../package.json').version
     } catch {
       this.version = 'unknown'
     }
-    this.apiEndpoint = options.apiEndpoint || 'https://api.mianbaoduo.com/release'
-    this.weChatOpenIdEndpoint = options.weChatOpenIdEndpoint || 'https://mbd.pub/openid'
-    this.timeout = options.timeout || 3000
-    this.agent = options.agent
-    this.ipAllowList = options.ipWhiteList || ['49.233.5.148', '140.143.158.124']
+    this.apiEndpoint = options?.apiEndpoint || 'https://api.mianbaoduo.com/release'
+    this.weChatOpenIdEndpoint = options?.weChatOpenIdEndpoint || 'https://mbd.pub/openid'
+    this.timeout = options?.timeout || 3000
+    this.agent = options?.agent
+    this.ipAllowList = options?.ipWhiteList || ['49.233.5.148', '140.143.158.124']
   }
 
   private sign(payload: Record<string, any>): string {
@@ -132,7 +132,7 @@ export class MbdPay {
           res.on('data', (chunk) => {
             chunks.push(chunk)
           })
-          res.on('end', () => {
+          res.on('close', () => {
             const body = Buffer.concat(chunks)
             try {
               resolve({
@@ -209,7 +209,7 @@ export class MbdPay {
     const payload = {
       openid: openId,
       description: order.description,
-      amount_total: order.amountInCent,
+      amount_total: order.priceInCent,
       out_trade_no: order.outTradeNumber,
       callback_url: redirectUrl,
     }
@@ -228,7 +228,7 @@ export class MbdPay {
     const payload = {
       channel: 'h5',
       description: order.description,
-      amount_total: order.amountInCent,
+      amount_total: order.priceInCent,
       out_trade_no: order.outTradeNumber,
     }
     const response = await this.request('/wx/prepay', payload)
@@ -247,7 +247,7 @@ export class MbdPay {
     const payload = {
       url: redirectUrl,
       description: order.description,
-      amount_total: order.amountInCent,
+      amount_total: order.priceInCent,
       out_trade_no: order.outTradeNumber,
     }
     const response = await this.request('/alipay/pay', payload)
