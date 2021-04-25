@@ -75,6 +75,18 @@
 					<li>检查 IP 是否在面包多白名单中</li>
 				</ul>
 				<p>涵盖当前（2021/04/25）面包多Pay 所有需主动请求的功能支持。</p>
+				<a href="#演示" id="演示" style="color: inherit; text-decoration: none;">
+					<h2>演示</h2>
+				</a>
+				<p>在 <a href="./src/demo">src/demo</a> 目录下有一份可以运行的演示服务，演示了如何使用该 SDK。</p>
+				<p>你可以在本地启动该演示服务。注意微信 H5 支付需要在<a href="https://mbd.pub/h5">面包多Pay 后台</a>设置 H5 域名。</p>
+				<pre><code class="language-bash"><span style="color: #000000">git clone https://github.com/oott123/node-mbdpay.git</span>
+<span style="color: #795E26">cd</span><span style="color: #000000"> node-mbdpay</span>
+<span style="color: #000000">yarn</span>
+<span style="color: #795E26">echo</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;MBD_APP_ID=你的appid&quot;</span><span style="color: #000000"> &gt; .env</span>
+<span style="color: #795E26">echo</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;MBD_APP_KEY=你的appkey&quot;</span><span style="color: #000000"> &gt;&gt; .env</span>
+<span style="color: #000000">yarn demo</span>
+</code></pre>
 				<a href="#使用" id="使用" style="color: inherit; text-decoration: none;">
 					<h2>使用</h2>
 				</a>
