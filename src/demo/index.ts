@@ -87,6 +87,7 @@ require('./alipay')
 require('./wechatWeb')
 require('./wechatApp')
 require('./paid')
+require('./refund')
 
 server.listen(8080, (err) => {
   if (err) {
