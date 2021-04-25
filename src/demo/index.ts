@@ -45,6 +45,7 @@ server.get('/', async (request, reply) => {
       <label>订单编号：<input name="outTradeNumber" type="text" value="mdbpay_" id="orderId"></label>
       <input name="browserUrl" type="hidden" id="browserUrl"></input>
       <button type="submit" formaction="/alipay">支付宝</button>
+      <button type="submit" formaction="/wechat-web">微信 H5</button>
     </form>
     <script>browserUrl.value = location.href; orderId.value += (Math.random().toString(36).slice(2))</script>
   </body>
@@ -53,6 +54,7 @@ server.get('/', async (request, reply) => {
 })
 
 require('./alipay')
+require('./wechatWeb')
 
 server.listen(8080, (err) => {
   if (err) {
