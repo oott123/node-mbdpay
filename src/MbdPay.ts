@@ -182,7 +182,7 @@ export class MbdPay {
    * @param redirectUrl 回调 URL
    * @return 将要跳转的 URL
    */
-  public weChatGetRedirectUrlForGetUserOpenId(redirectUrl: string): string {
+  public weChatGetRedirectUrlForGettingUserOpenId(redirectUrl: string): string {
     const url = new URL(this.weChatOpenIdEndpoint)
     const params = new URLSearchParams()
     params.set('target_url', redirectUrl)
@@ -195,7 +195,7 @@ export class MbdPay {
    * 获取微信 JSAPI 支付需要使用的参数
    *
    * @link https://doc.mbd.pub/api/wei-xin-zhi-fu
-   * @see weChatGetRedirectUrlForGetUserOpenId
+   * @see weChatGetRedirectUrlForGettingUserOpenId
    * @param openId 用户的 openId
    * @param order 订单详情
    * @param redirectUrl 支付完成后跳转的 URL
