@@ -282,7 +282,7 @@ export class MbdPay {
       order_id: orderId,
     }
 
-    const response = await this.request('/main/search_order', payload)
+    const response = await this.request('/main/refund', payload)
     return response.body.code === 200
   }
 
