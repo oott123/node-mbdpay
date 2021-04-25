@@ -15,7 +15,7 @@ export interface MbdPayOptions {
   /** API 请求超时 */
   timeout?: number
   /** http 请求 Agent */
-  agent?: Agent | undefined | false
+  agent?: any
   /** 面包多Pay IP 白名单 */
   ipWhiteList?: string[]
 }
