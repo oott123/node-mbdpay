@@ -1,3 +1,3 @@
-export * from './MbdPay'
-export * from './MbdPayError'
-export * from './TimeoutError'
+export * from './lib/MbdPay'
+export * from './lib/MbdPayError'
+export * from './lib/TimeoutError'
