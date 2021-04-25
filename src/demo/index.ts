@@ -45,10 +45,16 @@ server.get('/', async (request, reply) => {
       <label>订单编号：<input name="outTradeNumber" type="text" value="mdbpay_" id="orderId"></label>
       <input name="browserUrl" type="hidden" id="browserUrl"></input>
       <input name="openId" type="hidden" id="openId"></input>
-      <button type="submit" formaction="/alipay">支付宝</button>
-      <button type="submit" formaction="/wechat-web">微信 H5</button>
-      <button type="submit" formaction="/wechat-app">微信</button>
-      <button type="button" style="display: none;" id="clearOpenId" onclick="localStorage.openId = ''; alert('已清空openid'); location.replace('/')">清空openid</button>
+      <div>
+        <button type="submit" formaction="/alipay">支付宝</button>
+        <button type="submit" formaction="/wechat-web">微信 H5</button>
+        <button type="submit" formaction="/wechat-app">微信</button>
+      </div>
+      <div>
+        <button type="submit" formaction="/order" formmethod="get">查订单</button>
+        <button type="submit" formaction="/refund" formmethod="post">退款</button>
+        <button type="button" style="display: none;" id="clearOpenId" onclick="localStorage.openId = ''; alert('已清空openid'); location.replace('/')">清空openid</button>
+      </div>
     </form>
     <script>
       browserUrl.value = location.href;
@@ -80,6 +86,7 @@ server.get('/', async (request, reply) => {
 require('./alipay')
 require('./wechatWeb')
 require('./wechatApp')
+require('./paid')
 
 server.listen(8080, (err) => {
   if (err) {

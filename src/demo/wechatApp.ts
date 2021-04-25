@@ -15,7 +15,7 @@ server.post('/wechat-app', async (request, reply) => {
   if (!body.openId) {
     throw new Error('没有 openid')
   }
-  const url = body.browserUrl + 'paid?from=alipay&order_id=' + (order.outTradeNumber || '')
+  const url = body.browserUrl + 'paid?from=wechat-app&order_id=' + (order.outTradeNumber || '')
 
   const params = await mbdpay.weChatGetJsApiParams(openId, order, url)
 

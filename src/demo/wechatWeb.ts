@@ -17,6 +17,7 @@ server.post('/wechat-web', async (request, reply) => {
   </head>
   <body>
     <a href="${url.replace(/&/g, '&amp;')}">点击打开微信</a>
+    <a href="/paid?from=wechat-web&order_id=${order.outTradeNumber || ''}">点击查看付款结果</a>
   </body>
 </html>`)
 })
