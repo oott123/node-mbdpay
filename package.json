@@ -4,6 +4,7 @@
     "build": "tsc",
     "watch": "tsc -w"
   },
+  "files": ["dist"],
   "devDependencies": {
     "@types/node": "^14.14.41",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
