@@ -15,6 +15,21 @@
 
 涵盖当前（2021/04/25）面包多Pay 所有需主动请求的功能支持。
 
+## 演示
+
+在 [src/demo](./src/demo) 目录下有一份可以运行的演示服务，演示了如何使用该 SDK。
+
+你可以在本地启动该演示服务。注意微信 H5 支付需要在[面包多Pay 后台](https://mbd.pub/h5)设置 H5 域名。
+
+```bash
+git clone https://github.com/oott123/node-mbdpay.git
+cd node-mbdpay
+yarn
+echo "MBD_APP_ID=你的appid" > .env
+echo "MBD_APP_KEY=你的appkey" >> .env
+yarn demo
+```
+
 ## 使用
 
 ### 面包多Pay
