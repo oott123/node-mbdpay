@@ -9,7 +9,7 @@
     "preversion": "yarn clean && yarn build"
   },
   "license": "BSD-3-Clause",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": "oott123/node-mbdpay",
   "files": [
     "dist"
